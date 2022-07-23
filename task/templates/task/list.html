@@ -1,0 +1,23 @@
+{% extends "task/base.html "%}
+{% block content %}
+  <div class="d-flex justify-content-center">
+    <h1>To Do List</h1>
+  </div>
+    <a href="{% url 'task-create' %}"><button class="btn btn-outline-primary w-100">Create Task</button></a>
+  <div>
+    {% for task in tasks %}
+        <div class="border border-dark rounded item-row p-2 m-3 my-4">
+            <a href="{% url 'update_task' task.id %}" class="badge badge-info">Update</a>
+            <a href="{% url 'delete' task.id %}" class="badge badge-danger">Delete</a>
+            {% if task.complete == True %}
+            <strike>{{task}}</strike>
+            {% else %}
+            <span>{{task}}</span>
+            {% endif %}
+        </div>
+        {% empty %}
+          <span> No items in list</span>
+    {% endfor %}
+  </div>
+{% endblock content %}
+

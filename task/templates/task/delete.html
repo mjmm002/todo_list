@@ -1,0 +1,10 @@
+{% extends 'task/base.html' %}
+{% block content%}
+<h3>Are you sure you want to delete "{{task}}"?</h3>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <button type="cancel" onclick="window.history.back();" class="btn btn-outline-secondary w-100" name="Cancel">Cancel</button>
+    <input type="submit" class="btn btn-outline-primary" name="confirm">
+</form>
+{% endblock content %}
